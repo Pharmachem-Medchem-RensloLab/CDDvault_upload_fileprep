@@ -1,4 +1,4 @@
-# CDDvault_upload_fileprep
+# CDDvault Upload File Reformatting
 Contains two scripts:
 
 (1) Reformat CRO small molecule ADME data for upload to CDDVault
