@@ -13,7 +13,7 @@ def check_file(path):
         return None
 
 ## Reformat Protein Percent Bound Data
-def protein_percent_bound_data_reformat(path, default_batch_value):
+def percent_protein_bound_data_reformat(path, default_batch_value):
     df = check_file(path)
     if df is not None:
         df.columns = df.iloc[0]
@@ -29,9 +29,9 @@ def protein_percent_bound_data_reformat(path, default_batch_value):
         for col in float_columns:
             df[col] = df[col].apply(lambda x: round(float(x), 2) if isinstance(x, (int, float)) else x)
         df = df[required_columns]
-        print("Preview of Protein Percent Bound Data:")
+        print("Preview of Percent Protein Bound Data:")
         print(df.head())
-        output_filename = f'UCSF_Protein_Percent_Bound_Results_CDDformat_{datetime.now().strftime("%Y%m%d")}.csv'
+        output_filename = f'UCSF_Percent_Protein_Bound_Results_CDDformat_{datetime.now().strftime("%Y%m%d")}.csv'
         df.to_csv(output_filename, index=False)
         print(f"Output file created: {output_filename}")
     else:
