@@ -1,4 +1,3 @@
-# Import libraries
 import pandas as pd
 import os
 from rdkit import Chem
@@ -49,7 +48,7 @@ def process_data(project, chemist, input_file_1, input_file_2):
         ]
         required_columns_df2 = [
             "VIAL_QR_CODE", "SYNONYMS", "SMILES", "INITIAL_VOLUME_UL", "CONC_mM",
-            "SALT"
+            "SALT", "RLA Number"  # Added "RLA Number" to the required columns
         ]
 
         missing_columns_df1 = [col for col in required_columns_df1 if col not in df1.columns]
@@ -87,7 +86,7 @@ def process_data(project, chemist, input_file_1, input_file_2):
         # Select and rename the desired columns for the output
         output_df = merged_df[[
             "Container Id", "PLATE_WELL", "INITIAL_VOLUME_UL", "CONC_mM", "VIAL_QR_CODE",
-            "SMILES", "SYNONYMS"
+            "SMILES", "SYNONYMS", "RLA Number"  # Added "RLA Number" to the output columns
         ]].copy()
 
         output_df.rename(columns={
@@ -102,7 +101,7 @@ def process_data(project, chemist, input_file_1, input_file_2):
         # Reorder columns
         output_df = output_df[[
             "Project", "Chemist", "PLATE_BARCODE", "PLATE_WELL", "INITIAL_VOLUME_UL",
-            "CONC_mM", "VIAL_QR_CODE", "CDD_SMILES", "SYNONYMS"
+            "CONC_mM", "VIAL_QR_CODE", "CDD_SMILES", "SYNONYMS", "RLA Number"  # Added "RLA Number" to the reordered columns
         ]]
 
         # Display the first few rows of the output DataFrame
